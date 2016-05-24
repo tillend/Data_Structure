@@ -1,5 +1,7 @@
 package Queue;
-
+/**
+ * 用两个栈模拟队列操作
+ */
 import java.util.Stack;
 
 public class MyQueue<E> {
