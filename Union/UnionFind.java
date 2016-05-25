@@ -1,4 +1,5 @@
 package Union;
+
 /**
  * 
  * @author LIn
@@ -7,7 +8,7 @@ package Union;
  * 最坏情况下find耗时为O(n^2),因为合并可能使n个结点的树退化成一条链
  */
 public class UnionFind {
-	Node[] node;
+	Node[] node;   //父亲数组
 	//并查集中的结点
 	private static class Node{
 		int parent;
@@ -18,7 +19,7 @@ public class UnionFind {
 			root = true;
 		}
 	}
-	//初始化集合
+	//将每个元素初始化为一颗单结点树
 	public UnionFind(int n){
 		node = new Node[n + 1];
 		for(int e= 0; e <= n; e++){
@@ -26,7 +27,7 @@ public class UnionFind {
 		}
 	}
 	/*
-	 * find运算就是从元素e相应的结点走到数根出，找出所在集合的名字
+	 * find运算就是从元素e相应的结点走到树根处，找出所在集合的名字
 	 */
 	public int find(int e){
 		while(!node[e].root){
@@ -35,7 +36,7 @@ public class UnionFind {
 		return e;
 	}
 	/*
-	 * 合并两个集合
+	 * union运算，合并两个集合
 	 * 只要将表示其中一个集合的树的数根改为表示另一个集合的树的数根的儿子结点
 	 */
 	public void union(int a, int b){
