@@ -1,7 +1,7 @@
 package Union;
 
 public class FastUnionFind {
-	Node[] node;
+	Node[] node;   //父亲数组
 	//并查集中的结点
 	private static class Node{
 		int parent;
@@ -12,7 +12,7 @@ public class FastUnionFind {
 			root = true;
 		}
 	}
-	//初始化集合
+	//将每个元素初始化为一颗单结点树
 	public FastUnionFind(int n){
 		node = new Node[n + 1];
 		for(int e= 0; e <= n; e++){
@@ -21,7 +21,7 @@ public class FastUnionFind {
 	}
 	/*
 	 * find运算(加速)
-	 * 从元素e相应的结点走到数根出，找出所在集合的名字
+	 * 从元素e相应的结点走到树根处，找出所在集合的名字
 	 */
 	public int find(int e){
 		int current = e, p ,gp;
