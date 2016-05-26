@@ -1,5 +1,6 @@
 package Array;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -122,6 +123,28 @@ public class Array {
 			}
 		}
 		return -1;
+	}
+	/**
+	 * 求数组中两两相加等于定值的组合种数(能使用散列函数以空间换时间)
+	 * 时间复杂度取决于排序算法
+	 * @param a  
+	 * @param sum
+	 */
+	public static void findSum(int[] a, int sum){
+		Arrays.sort(a);
+		int begin = 0;
+		int end = a.length - 1;
+		while(begin < end){
+			if(a[begin] + a[end] < sum){
+				begin++;
+			}else if(a[begin] + a[end] > sum){
+				end--;
+			}else{
+				System.out.print(a[begin] + "," + a[end]);
+				begin++;
+				end--;
+			}
+		}
 	}
 
 }
