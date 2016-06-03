@@ -4,22 +4,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
-	//树的节点
-	private static class Node<AnyType>{
-		AnyType element;     //节点数据
-		Node<AnyType> left;  //左孩子
-		Node<AnyType> right; //左孩子
-		
-		Node(AnyType element){
-			this(element, null, null);
-		}
-		
-		Node(AnyType element, Node<AnyType> lt, Node<AnyType> rt){
-			this.element = element;
-			left = lt;
-			right = rt;
-		}
-	}
 	
 	private Node<AnyType> root;  //根节点
 	
@@ -46,7 +30,7 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
 	 * @throws Exception 
 	 */
     public AnyType findMin() throws Exception{
-        if( isEmpty() )
+        if(isEmpty())
             throw new Exception();
         return findMin(root).element;
     }
@@ -122,7 +106,7 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
      */
     private Node<AnyType> insert(AnyType x, Node<AnyType> t) {
     	if(t == null)
-    		return new Node<>(x, null, null);
+    		return new Node<>(x, null, null);   //递归最后找到了属于自己的位置
     	
     	int compareResult = x.compareTo(t.element);
     	if(compareResult < 0)
@@ -130,7 +114,7 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
     	else if(compareResult > 0)
     		t.right = insert(x, t.right);
     	else
-    		;
+    		;    //什么都不做
     	
 		return t;
 	}
@@ -159,7 +143,7 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
     		t.right = remove(t.element, t.right);
     	}
     	else
-    		t = (t.left != null)?t.left:t.right;
+    		t = (t.left != null)?t.left:t.right;  //要删除的节点有一个孩子或无孩子
     	
     	return t;
 	}
@@ -228,4 +212,21 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
     	}
     }
 
+}
+
+//树的节点
+class Node<AnyType>{
+	AnyType element;     //节点数据
+	Node<AnyType> left;  //左孩子
+	Node<AnyType> right; //左孩子
+	
+	Node(AnyType element){
+		this(element, null, null);
+	}
+	
+	Node(AnyType element, Node<AnyType> lt, Node<AnyType> rt){
+		this.element = element;
+		left = lt;
+		right = rt;
+	}
 }
