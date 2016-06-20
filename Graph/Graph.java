@@ -15,7 +15,7 @@ public class Graph {
     private  int[][] arcs;     //存储边信息（邻接矩阵）
     private int vexnum;        //图的节点数
     private boolean[] visited; // 记录节点是否已被遍历
-    Queue<Integer> q = new LinkedList<Integer>();  //
+    Queue<Integer> q = new LinkedList<Integer>();  //以LinkedList来实现队列
     
     // 初始化
     public Graph(int n) {
@@ -126,11 +126,11 @@ public class Graph {
         int k,j;
         visited[i] = true;//标记顶点i被访问 
         visit(i);
-        q.add(i);
+        q.add(i);         //入队列
         
         while(!q.isEmpty()){  
             k=q.poll(); 
-            for(j=0;j<vexnum;j++){  
+            for(j = 0; j < vexnum; j++){  
                 if(arcs[k][j] == 1 && !visited[j]){ 
                 	visit(j);
                     visited[j]=true;  
