@@ -1,5 +1,6 @@
 package Tree;
 
+import Heap.MinHeap;
 import Union.FastUnionFind;
 
 public class Min_SpanningTree {
